@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <bookmarks list=""/>
+  <node unique_id="1" master_id="0" name="General Information" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770227226" ts_lastsave="1770227264">
+    <rich_text>Security Assessment and Vulnerability Analysis
+using Nmap
+
+Institution:
+Escuela Colombiana de Ingeniería Julio Garavito
+
+Authors:
+Laura Daniela Rodríguez
+Sergio Andrés Bejarano
+
+Assessment Environment:
+- Attacking machine: Kali Linux
+- Target machine: Metasploitable
+- Target IP address: 192.168.137.129
+
+Date:
+February 4, 2026
+</rich_text>
+  </node>
+  <node unique_id="2" master_id="0" name="Executive Summary" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770227274" ts_lastsave="1770227279">
+    <rich_text>This report presents the results of a security assessment conducted on the Metasploitable virtual machine using the Nmap tool from a Kali Linux environment.
+
+The assessment identified multiple exposed services, outdated software versions, and insecure configurations. Several of the findings represent critical vulnerabilities that could allow unauthorized access and full system compromise.
+
+The results highlight a high overall risk level and demonstrate the importance of secure service configuration, patch management, and continuous security assessments.
+</rich_text>
+  </node>
+  <node unique_id="3" master_id="0" name="Objectives" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770227293" ts_lastsave="1770227294">
+    <rich_text>General Objective:
+To identify active services, software versions, and potential vulnerabilities present on the Metasploitable machine.
+
+Specific Objectives:
+- Identify open TCP ports.
+- Detect running services and software versions.
+- Assess the security impact of identified vulnerabilities.
+- Assign severity and risk levels.
+- Propose mitigation controls.
+</rich_text>
+  </node>
+  <node unique_id="4" master_id="0" name="Scope of the Assessment" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770227306" ts_lastsave="1770227330">
+    <rich_text>The scope of this assessment was limited to active network scanning and service enumeration.
+
+No exploitation of vulnerabilities was performed. All activities were conducted in a controlled academic environment for educational purposes only.
+</rich_text>
+  </node>
+  <node unique_id="5" master_id="0" name="Methodology" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770227330" ts_lastsave="1770227331">
+    <rich_text>The following methodology was applied during the assessment:
+
+1. Target identification and availability verification.
+2. TCP port scanning.
+3. Service and version detection.
+4. Identification of insecure configurations.
+5. Risk analysis and severity classification.
+6. Documentation of findings and recommendations.
+</rich_text>
+  </node>
+  <node unique_id="6" master_id="0" name="Tools and Commands Used" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770227341" ts_lastsave="1770227403">
+    <rich_text>Primary Tool:
+Nmap (Network Mapper), an open-source tool used for network discovery and security auditing.
+
+Command Executed
+
+
+
+Command Explanation:
+- -sS: TCP SYN (half-open) scan.
+- -A: OS detection, version detection, and script scanning.
+- -T4: Aggressive scan timing.
+- -oN: Output saved in normal text format.
+</rich_text>
+    <codebox char_offset="126" justification="left" frame_width="500" frame_height="100" width_in_pixels="1" syntax_highlighting="sh" highlight_brackets="1" show_line_numbers="0">nmap -sS -A -T4 192.168.137.129 -oN nmap_scan.txt</codebox>
+  </node>
+  <node unique_id="7" master_id="0" name="Scan Results Overview" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770227430" ts_lastsave="1770227446">
+    <rich_text>The scan revealed more than twenty open TCP ports, indicating a broad attack surface.
+
+Multiple services were identified as outdated or insecure, increasing the overall exposure of the system.
+
+21   FTP
+22   SSH
+23   Telnet
+25   SMTP
+53   DNS
+80   HTTP
+139  SMB
+445  SMB
+1524 Root Bind Shell
+3306 MySQL
+5432 PostgreSQL
+6667 IRC
+8180 Apache Tomcat
+
+
+</rich_text>
+  </node>
+  <node unique_id="8" master_id="0" name="Severity Classification Methodology" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770227463" ts_lastsave="1770227895">
+    <node unique_id="9" master_id="0" name="Severity Rating Table (CVSS v3 Aligned)" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770227476" ts_lastsave="1770227806">
+      <rich_text>Severity Levels and Definitions:
+
+</rich_text>
+      <rich_text justification="left"></rich_text>
+      <table char_offset="34" justification="left" col_min="64" col_max="64" col_widths="105,0,154">
+        <row>
+          <cell>
+
+CRITICAL</cell>
+          <cell>
+
+9.0 – 10.0</cell>
+          <cell>Exploitation results in full system compromise. Immediate remediation required.</cell>
+        </row>
+        <row>
+          <cell>
+HIGH</cell>
+          <cell>
+7.0 – 8.9</cell>
+          <cell>Exploitation may cause privilege escalation or data loss.</cell>
+        </row>
+        <row>
+          <cell>MODERATE</cell>
+          <cell>4.0 – 6.9</cell>
+          <cell>Exploitation requires additional conditions.</cell>
+        </row>
+        <row>
+          <cell>LOW</cell>
+          <cell>0.1 – 3.9</cell>
+          <cell>Limited impact vulnerability.</cell>
+        </row>
+        <row>
+          <cell>INFORMATIONAL</cell>
+          <cell>N/A</cell>
+          <cell>No vulnerability identified.</cell>
+        </row>
+        <row>
+          <cell>Severity</cell>
+          <cell>CVSS v3 Range</cell>
+          <cell>Definition</cell>
+        </row>
+      </table>
+    </node>
+    <node unique_id="10" master_id="0" name="Risk Scoring Model" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770227829" ts_lastsave="1770227881">
+      <rich_text>Impact Score (1–5):
+1 = Negligible
+2 = Low
+3 = Moderate
+4 = High
+5 = Critical
+
+Likelihood Score (1–5):
+1 = Very unlikely
+2 = Unlikely
+3 = Possible
+4 = Likely
+5 = Almost certain
+
+Risk Score Formula:
+Risk = Impact × Likelihood
+
+</rich_text>
+    </node>
+  </node>
+  <node unique_id="11" master_id="0" name="Findings and Risk Assessment" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770227895" ts_lastsave="1770228012">
+    <rich_text>
+</rich_text>
+    <rich_text scale="h2">Finding 1: Anonymous FTP Access (vsftpd 2.3.4)</rich_text>
+    <rich_text>
+
+
+
+
+</rich_text>
+    <rich_text scale="h2">Finding 2: Telnet Service Enabled</rich_text>
+    <rich_text>
+
+
+
+
+
+
+</rich_text>
+    <rich_text scale="h2">Finding 3: Root Bind Shell Exposed</rich_text>
+    <rich_text>
+
+
+
+
+
+
+
+</rich_text>
+    <rich_text scale="h2">Finding 4: Insecure SMB Configuration</rich_text>
+    <rich_text>
+
+
+
+
+
+
+</rich_text>
+    <rich_text scale="h2">Finding 5: Outdated Apache Tomcat</rich_text>
+    <rich_text>
+
+
+
+
+
+</rich_text>
+  </node>
+  <node unique_id="12" master_id="0" name="Risk Mitigation Controls" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770227978" ts_lastsave="1770227985"/>
+  <node unique_id="13" master_id="0" name="Conclusions" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770227985" ts_lastsave="1770227991"/>
+  <node unique_id="14" master_id="0" name="Annexes" prog_lang="custom-colors" tags="" readonly="0" nosearch_me="0" nosearch_ch="0" custom_icon_id="0" is_bold="0" foreground="" ts_creation="1770227991" ts_lastsave="1770227996">
+    <rich_text>- Nmap scan output file (nmap_scan.txt)
+</rich_text>
+  </node>
+</cherrytree>
